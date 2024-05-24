@@ -1,20 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Win32;
+using System;
 using System.Windows.Forms;
-using Microsoft.Win32;
 
 namespace Change_ProxyServer
 {
     public partial class Form1 : Form
     {
         RegistryKey Internet_Settings = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings", true);
-        
+
         public Form1()
         {
             InitializeComponent();
@@ -23,8 +16,8 @@ namespace Change_ProxyServer
         private void btn_set_Click(object sender, EventArgs e)
         {
             string proxy = txt_IP.Text + ":" + txt_Port.Text;
-            Internet_Settings.SetValue("ProxyEnable",1);
-            Internet_Settings.SetValue("ProxyServer",proxy);
+            Internet_Settings.SetValue("ProxyEnable", 1);
+            Internet_Settings.SetValue("ProxyServer", proxy);
             this.Text = "Change To " + proxy;
             System.Threading.Thread.Sleep(1000);
             Application.Exit();
